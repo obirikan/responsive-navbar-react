@@ -1,11 +1,23 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import './navbar.css'
+import { Button } from './Button'
 
 const Navbar = () => {
 const [click,setClick]=useState(false)
+const [button,setbutton]=useState(true)
 
 const handle=()=>setClick(!click)
 const closemobile=()=>setClick(false)
+
+const showbutton=()=>{
+    if(window.innerWidth<=960){
+        setbutton(false)
+    }else{
+        setbutton(true)
+    }
+}
+window.addEventListener('resize',showbutton)
   return (
     <nav className='navbar'>
       <div className='navbar-container'>
@@ -36,7 +48,10 @@ const closemobile=()=>setClick(false)
                     sign up
                 </Link>
             </li>
+            <h1 className="kay">ss</h1>
          </ul>
+         {button&&<Button>Sign up</Button>}
+        
       </div>
     </nav>
   )
